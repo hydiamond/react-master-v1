@@ -18,3 +18,27 @@ jobs:
           root: .
           paths:
             - .
+  deploy:
+    docker:
+      - image: "coxauto/aws-ebcli"
+    steps:
+      - attach_workspace:
+          at: .
+      - run:
+          name: "Checking eb cli tool"
+          command: "eb --version"
+      - run:
+          name: "Checking source code configuration"
+          command: "ls"
+      - run:
+          name: "Deploy to Beanstalk"
+          command: "eb deploy"
+workflows:
+  version: 2
+  build_deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+
