@@ -17,7 +17,7 @@ class App extends Component {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Xin chao ban Huy
+            Xin chao ban Huy 11
           </a>
         </header>
       </div>
